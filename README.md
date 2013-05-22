@@ -1,16 +1,19 @@
 awssum-iam-creds
 ================
 
-## Tiny module to fetch IAM creds from IMD and pass to awssum.
+#### This is a tiny module to fetch IAM creds from IMD and pass to awssum.
 
 If you're running inside EC2, you can use instance metadata (IMD)
-to fetch temporary credentials from IAM. This does that, and returns
-the creds in the format expected by awssum: { accessKeyId, secretAccessKey, token }.
+to fetch temporary credentials from IAM, instead of keeping secrets
+inside your EC2 instances.
 
-note: fetching the region is quite brittle, so you may optionally pass
-the region in as the second argument. if it's not passed in, then we'll
-shave the last char off the availability zone listed in IMD, and use that.
-if you only use one region, that's simplest anyway.
+This module does that, and returns the creds in the format expected
+by awssum: ```{ accessKeyId, secretAccessKey, token }```.
+
+Note: fetching the region is kinda brittle, so you may optionally pass
+the region in as the second argument. If it's not passed in, then we'll
+get the availability zone from IMD, shave off the last char, and use that.
+If you only use one region, there's no need to do that API hit anyway.
 
 ## Example.
 ### before:
@@ -25,4 +28,3 @@ if you only use one region, that's simplest anyway.
 #### or, in single region installs:
 
     getIamCreds(function(err, creds) { new CloudWatch(creds) }, 'us-west-2');
-

@@ -22,7 +22,7 @@ If you only use one region, there's no need to do that API hit anyway.
 
 ### after: 
 
-    var getIamCreds = require("./credentials.js");
+    var getIamCreds = require('get-iam-creds');
     getIamCreds(function(err, creds) { new CloudWatch(creds) });
 
 #### or, in single region installs:

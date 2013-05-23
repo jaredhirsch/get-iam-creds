@@ -1,4 +1,4 @@
-awssum-iam-creds
+get-iam-creds
 ================
 
 #### This is a tiny module to fetch IAM creds from IMD and pass to awssum.

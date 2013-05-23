@@ -1,15 +1,16 @@
 {
-  "name": "awssum-iam-creds",
+  "name": "get-iam-creds",
   "version": "0.0.1",
-  "description": "Tiny module to fetch IAM creds from IMD and pass to awssum",
+  "description": "Tiny module to fetch IAM creds from IMD",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/6a68/awssum-iam-creds.git"
+    "url": "git://github.com/6a68/get-iam-creds.git"
   },
+  "bugs": "https://github.com/6a68/get-iam-creds/issues",
   "keywords": [
     "aws",
     "awssum",
@@ -19,7 +20,6 @@
   "author": "Jared Hirsch <ohai@6a68.net>",
   "license": "Apache 2",
   "readmeFilename": "README.md",
-  "gitHead": "f5e58fc620b2fdfd3bab97159d9b92abcd456613",
   "dependencies": {
     "awssum": "~1.0.0-beta",
     "awssum-amazon": "~1.0.2",

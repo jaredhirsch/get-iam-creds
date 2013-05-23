@@ -1,5 +1,5 @@
 {
-  "name": "6a68-awssum-iam-creds",
+  "name": "awssum-iam-creds",
   "version": "0.0.1",
   "description": "Tiny module to fetch IAM creds from IMD and pass to awssum",
   "main": "index.js",

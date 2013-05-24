@@ -15,22 +15,11 @@ module.exports = function getIamCreds(cb, region) {
         secretAccessKey: parsed.SecretAccessKey,
         token: parsed.Token
       };
-      if (region) {
-        setRegion(region);
-      } else {
-        // brittle method to obtain region: shave last char off of AZ.
-        // example: 'us-west-2a' => 'us-west-2'.
-        // no other way exists unless we insert that via config mgmt.
-        imd.Get({Version: 'latest', Category: '/meta-data/placement/availability-zone' }, function(err, data) {
-          if (err) return cb(err); 
-          var region = data.Body.substr(0, data.Body.length-1);
-          setRegion(region);
-        });
-      }
+      imd.Get({Version: 'latest', Category: '/dynamic/instance-identity/document'}, function(err, data) {
+        if (err) return cb(err); 
+        creds.region = JSON.parse(data.Body).region;
+        cb(null, creds);
+      });
     });
   });
-  function setRegion(region) {
-    creds.region = region;
-    cb(null, creds);
-  }
 };
